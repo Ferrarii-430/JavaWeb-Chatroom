@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--命名空间应该是对应接口的包名+接口名 -->
+
+<mapper namespace="com.example.Spring.DAO.LoginMapper">
+    <!--id应该是接口中的方法，结果类型如没有配置别名则应该使用全名称 -->
+    <!--登录查询 -->
+    <select id="IDLogin" resultType="Login">
+        select * from login where (Email=#{ID} and Password=#{PassWord})
+                                                            or (Phone=#{ID} and Password=#{PassWord})
+                                                            or (NickName=#{ID} and Password=#{PassWord})
+    </select>
+
+    <!-- 状态查询 -->
+    <select id="Judgment" resultType="int">
+        select State from login where (UserID=#{ID})
+    </select>
+
+
+    <!-- 查找用户真实ID -->
+    <select id="getUserID" resultType="int">
+        select UserID from login where (Email=#{ID}) or (Phone=#{ID}) or (NickName=#{ID}) or (UserID=#{ID})
+    </select>
+    <!-- 这个地方屎山代码 能改但是太麻烦 不改了 -->
+
+    <!-- 查找用户真实昵称 -->
+    <select id="getNickname" resultType="String">
+        select NickName from login where (Phone=#{ID}) or (NickName=#{ID}) or (Email=#{ID}) or (UserID=#{ID})
+    </select>
+
+
+    <!-- 根据用户ID List 查找用户真实昵称 -->
+    <select id="getNickname_list" resultType="String">
+        select NickName from login where UserID in <foreach collection="List" item="List" open="(" separator="," close=")">
+        #{List}
+    </foreach>
+    </select>
+
+    <!-- 根据用户ID 修改其登录状态500 -->
+    <update id="setUserJudgment_500">
+        UPDATE login SET State = 500 WHERE (UserID = #{ID})
+    </update>
+
+    <!-- 根据用户ID 修改其登录状态200 -->
+    <update id="setUserJudgment_200">
+        UPDATE login SET State = 200 WHERE (UserID = #{ID})
+    </update>
+
+    <!-- 查找所有游客账户的状态 -->
+    <select id="getTourist_list" resultType="String">
+        select State from tourist
+    </select>
+
+    <!-- 根据用户ID List 查找用户实时状态 -->
+    <select id="getJudgment_list" resultType="String">
+        select State from login where UserID in <foreach collection="List" item="List" open="(" separator="," close=")">
+        #{List}
+    </foreach>
+    </select>
+</mapper>

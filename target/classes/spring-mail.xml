@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <context:property-placeholder location="classpath:linuxPath.properties" file-encoding="utf-8"/>
+
+    <bean id="configProperties"
+          class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="locations">
+            <list>
+                <value>classpath:/*.properties</value>
+            </list>
+        </property>
+        <property name="fileEncoding">
+            <value>utf-8</value>
+        </property>
+    </bean>
+
+
+    <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+
+        <property name="host" value="${email.host}"></property>
+        <property name="port" value="${email.port}"></property>
+<!--        <property name="port" value="465"></property>-->
+        <property name="username" value="${email.username}"></property>
+        <property name="password" value="${email.password}"></property>
+        <property name="defaultEncoding" value="UTF-8"></property>
+        <property name="protocol" value="${email.protocol}"></property>
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.smtp.auth">true</prop>
+                <prop key="mail.debug">true</prop>
+                <prop key="mail.smtp.timeout">0</prop>
+                <prop key="mail.smtp.socketFactory.class">javax.net.ssl.SSLSocketFactory</prop>
+                <prop key="mail.smtp.starttls.enable">true</prop>
+                <prop key="mail.smtp.socketFactory.fallback">true</prop>
+                <prop key="mail.smtp.EnableSSL.enable">true</prop>
+                <prop key="java.net.preferIPv4Stack">true</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="mailMessage" class="org.springframework.mail.SimpleMailMessage">
+        <property name="from" value="phphwo@gmail.com"></property>
+    </bean>
+
+    <bean id="registerService" class="com.example.Spring.Service.RegisterService">
+        <property name="javaMailSender" ref="mailSender"></property>
+        <property name="mailMessage" ref="mailMessage"></property>
+        <property name="regiset_1" value="${email.text_1}"></property>
+        <property name="regiset_2" value="${email.text_2}"></property>
+        <property name="subject" value="${email.subject}"></property>
+        <property name="regEx_name" value="${Pattern.name.regexp}"></property>
+        <property name="regEx_phone" value="${Pattern.phone.regexp}"></property>
+        <property name="regEx_email1" value="${Pattern.email1.regexp}"></property>
+        <property name="regEx_email2" value="${Pattern.email2.regexp}"></property>
+        <property name="real_headimg" value="${path.headimg_real}"></property>
+        <property name="real_systemXML" value="${path.systemXML_real}"></property>
+        <property name="key">
+            <list>
+                <value>username</value>
+                <value>phone</value>
+                <value>email</value>
+                <value>verification</value>
+                <value>password1</value>
+                <value>password2</value>
+                <value>base64</value>
+            </list>
+        </property>
+    </bean>
+
+</beans>

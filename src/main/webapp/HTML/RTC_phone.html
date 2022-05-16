@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>移动端摄像头</title>
+</head>
+<script src="../JS/jquery.min.js"></script>
+<script src="../JS/jquery.cookie.js"></script>
+<body>
+<button onclick="get_cook()">获取cook</button>
+<button onclick="del_cook()">删除cook</button>
+</body>
+<script type="text/javascript">
+    function get_cook(){
+        console.log($.cookie("test"));
+        console.log($.cookie());
+        console.log($.cookie("test"));
+    }
+    function del_cook(){
+        $.removeCookie('test',{path: '/'});
+    }
+</script>
+</html>

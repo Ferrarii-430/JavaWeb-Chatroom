@@ -1,0 +1,71 @@
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Websocket Demo</title>
+    <link rel="shortcut icon"  href="#"/>
+</head>
+<body>
+
+<link type="text/css" rel="stylesheet" href="../CSS/bundle.css">
+<link type="text/css" rel="stylesheet" href="../CSS/app.min.css">
+<link type="text/css" rel="styleSheet"  href="../CSS/index.css" />
+<script type="text/javascript" src="../JS/jquery.min.js"></script>
+<script type="text/javascript" src="../JS/jquery.cookie.js"></script>
+<script type="text/javascript" src="../JS/put_img.js"></script>
+<script type="text/javascript" src="../JS/bundle.js"></script>
+<script type="text/javascript" src="../JS/app.min.js"></script>
+Websocket Demo
+<hr>
+<button id="ws">使用ws创建连接</button>
+<button id="close" onclick="closeWebSocket()">关闭websocket连接</button>
+<br/>
+<div id="text" contenteditable="true" placeholder='请输入文字'></div>
+<button id="put_txt">发送数据</button><button id="put_nonetxt">发送单体数据</button>
+    <input type="file" id="fileinp" onchange="showImg()" accept="image/gif, image/jpeg, image/png, image/jpg">
+<br/><br/>
+<button id="put_rtc_start" onclick="goPAGE()">按下发言</button> <button onclick="Test_sql()">测试数据</button><br>
+<button onclick="setsrc()">修改图片数据</button> <button onclick="addimg()">添加图片数据</button>
+<button onclick="Test_array()">测试数组数据</button><button><a href="RTC_phone.html">测试cook</a></button>
+<div id="message">↓</div><br/>
+<div class="images">
+<a class="example" id="example1-1" title="hi,这是一个imgbox例子" href="">
+    <img alt="" src="../JPG/10001.jpg" width="100px"/>
+</a>
+</div>
+<!--    <div class="images">-->
+<!--    <a class="example" id="example1-2" title="hi,这是一个imgbox例子" href="">-->
+<!--        <img alt="" src="../JPG/10001.jpg" width="200px"/>-->
+<!--    </a>-->
+<!--    </div>-->
+<!--    <div class="images">-->
+<!--    <a class="example" id="example1-3" title="hi,这是一个imgbox例子" href="">-->
+<!--        <img alt="" src="../JPG/10001.jpg" width="300px"/>-->
+<!--    </a>-->
+<!--    </div>-->
+<!--    <img class="example1-4" alt="" src="../JPG/10001.jpg" width="100px"/>-->
+    <br><button onclick="bigimages()">测试数据</button><br><button onclick="Test2()">测试数据2</button><br>
+<div class="custom-control custom-checkbox">
+    <input type="checkbox" class="custom-control-input" id="customCheck1">
+    <label class="custom-control-label" for="customCheck1">记住密码</label>
+</div>
+<div class="modal fade" id="big-images" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-zoom" role="document">
+        <div class="modal-content">
+            <div class="modal-body text-center pt-5">
+                <div class="row">
+                    <div class="col-md-8 offset-2">
+                        <figure>
+                            <img src="../JPG/10001.jpg" class="img-fluid" alt="image" style="width:100%">
+                        </figure>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-primary start-tour" data-dismiss="modal" aria-label="Close">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
