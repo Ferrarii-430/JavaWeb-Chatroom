@@ -7,5 +7,5 @@
 本作为大二时写的 非常捞 大佬见谅<br/><br/>
 测试地址：<a href="http://www.phphwo.cn" target="_blank">phphwo.cn</a>
 
-目前测试地址已经GG
-“邻国”目前备案是不可能通过了
+目前测试地址已经GG<br/>
+“邻国”目前情况备案是不可能通过了
