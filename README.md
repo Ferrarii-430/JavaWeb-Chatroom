@@ -8,4 +8,4 @@
 测试地址：<a href="http://www.phphwo.cn" target="_blank">phphwo.cn</a>
 
 目前测试地址已经GG<br/>
-“邻国”目前情况备案是不可能通过了
+备案无法通过 已被替换为博客
